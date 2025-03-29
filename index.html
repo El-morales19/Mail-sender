@@ -25,6 +25,13 @@
         h2 {
             text-align: center;
         }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
         button {
             width: 100%;
             padding: 10px;
@@ -50,6 +57,12 @@
     <div class="container">
         <h2>Thank you for participating in this small activity</h2>
         <form id="sendEmailForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
             <button type="submit">Send Example Email</button>
         </form>
         <p>If you have any questions, feel free to reach out!</p>
@@ -64,9 +77,13 @@
         document.getElementById('sendEmailForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            // Prepare the template parameters
             const templateParams = {
-                name: 'User',  // Static name as an example
-                email: 'user@example.com', // Static email as an example
+                name: name,  // User's name from the form
+                email: email, // User's email from the form
             };
 
             // Send the email using EmailJS
@@ -81,3 +98,4 @@
 
 </body>
 </html>
+
