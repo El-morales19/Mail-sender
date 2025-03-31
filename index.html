@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Participación</title>
+    <title>Participation Form</title>
 </head>
 <body style="background-color: white; font-family: Arial, sans-serif; padding: 20px;">
-    <h2>Formulario de Participación</h2>
+    <h2>Participation Form</h2>
 
     <form id="participationForm" method="POST" action="/send_email">
-        <label for="name">Nombre:</label>
+        <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br><br>
 
-        <label for="email">Correo Electrónico:</label>
+        <label for="email">Email Address:</label>
         <input type="email" id="email" name="email" required><br><br>
 
         <p>
             <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
-            <label for="acceptTerms">Al presionar "Enviar", aceptas ser parte de esta actividad.</label>
+            <label for="acceptTerms">By pressing "Send", you agree to be part of this activity.</label>
         </p>
 
         <button type="submit" style="background-color: blue; color: white; padding: 10px 20px; border: none;">Send</button>
