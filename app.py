@@ -15,14 +15,20 @@ def send_email():
     name = request.form['name']
     email = request.form['email']
 
+    # Obtener la API key desde las variables de entorno
+    api_key = os.getenv('API_KEY')  # La variable de entorno debe llamarse 'API_KEY'
+    
+    if not api_key:
+        return "Error: API key is not set in environment variables", 500
+
     # Enviar correo usando la API de Mailgun
-    send_simple_message(name, email)
+    try:
+        send_simple_message(name, email, api_key)
+        return "Correo enviado correctamente"
+    except Exception as e:
+        return f"Error al enviar el correo: {str(e)}", 500
 
-    return "Correo enviado correctamente"
-
-def send_simple_message(name, email):
-    # Reemplazar 'API_KEY' con tu clave real de Mailgun
-    api_key = os.getenv('API_KEY', 'tu_api_key')
+def send_simple_message(name, email, api_key):
     domain = 'sandbox4d2c52cdc8d14e8d926da2f43fac381f.mailgun.org'
     url = f"https://api.mailgun.net/v3/{domain}/messages"
 
@@ -39,6 +45,14 @@ def send_simple_message(name, email):
         auth=("api", api_key),
         data=data
     )
+
+    if response.status_code != 200:
+        raise Exception(f"Mailgun API error: {response.text}")
+    
+    print(response.text)  # Puedes imprimir la respuesta para depuración
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
     print(response.text)  # Puedes imprimir la respuesta para depuración
 
