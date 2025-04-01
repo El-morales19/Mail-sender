@@ -36,7 +36,7 @@ def send_simple_message(name, email, api_key):
         "from": "Mailgun Sandbox <postmaster@sandbox4d2c52cdc8d14e8d926da2f43fac381f.mailgun.org>",
         "to": f"{name} <{email}>",
         "subject": f"Hello {name}",
-        "template": "change_password",  # Asegúrate de tener la plantilla adecuada en Mailgun
+        "template": "change password",  # Asegúrate de tener la plantilla adecuada en Mailgun
         "h:X-Mailgun-Variables": f'{{"name": "{name}", "email": "{email}"}}'
     }
 
