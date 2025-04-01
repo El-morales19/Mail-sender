@@ -7,7 +7,7 @@ app = Flask(__name__)
 # Ruta para la página principal
 @app.route('/')
 def index():
-    return render_template_string(open('form.html').read())
+    return render_template_string(open('index.html').read())
 
 # Ruta para recibir el formulario y enviar el correo
 @app.route('/send_email', methods=['POST'])
