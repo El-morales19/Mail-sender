@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Participation Form</title>
+
+    <!-- Vinculación de la hoja de estilos CSS -->
     <style>
-        /* Estilo general del body */
+        /* Body y fondo */
         body {
-            background-color: white;
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            position: relative;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            height: 100vh; /* Asegura que el body ocupe toda la altura de la pantalla */
+            overflow: hidden; /* Elimina el scroll */
         }
 
         /* Video de fondo */
@@ -22,116 +24,114 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            z-index: 0;  /* Colocamos el video por detrás del formulario */
-        }
-
-        /* Contenedor del formulario */
-        #form-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.5);  /* Fondo transparente */
-            padding: 30px;
-            border-radius: 10px;
-            z-index: 1;  /* Asegura que el formulario esté encima del video */
-            width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            object-fit: cover; /* Hace que el video cubra toda el área sin deformarse */
+            z-index: -1; /* Asegura que el video esté detrás de los otros elementos */
         }
 
         /* Estilo del formulario */
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        #form-container {
+            background-color: rgba(0, 0, 50, 0.7); /* Azul petróleo con opacidad */
+            color: lightgray; /* Texto gris claro */
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
         }
 
-        /* Estilo de las etiquetas */
+        h2 {
+            text-align: center;
+            color: lightgray; /* Texto en gris claro */
+        }
+
         label {
+            font-size: 1rem;
+            margin-bottom: 10px;
             color: lightgray;
-            font-size: 16px;
+            display: block;
         }
 
-        /* Estilo de las cajas de texto */
-        input[type="text"], input[type="email"], button {
+        input[type="text"], input[type="email"] {
+            width: 100%;
             padding: 10px;
-            font-size: 16px;
+            margin-bottom: 20px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
+            color: #333;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #28a745; /* Botón verde */
+            color: white;
+            padding: 12px 20px;
             border: none;
             border-radius: 5px;
-            margin-top: 5px;
-        }
-
-        /* Cajas de texto */
-        input[type="text"], input[type="email"] {
-            background-color: #333;
-            color: lightgray;
-        }
-
-        /* Estilo del botón */
-        button {
-            background-color: green;
-            color: white;
             cursor: pointer;
-            transition: background-color 0.3s;
+            font-size: 1rem;
+            width: 100%;
         }
 
         button:hover {
-            background-color: darkgreen;
+            background-color: #218838; /* Hover del botón */
         }
 
-        /* Estilo de la indicación debajo del botón */
-        .agreement-text {
-            color: lightgray;
+        p {
             text-align: center;
-            font-size: 14px;
-            margin-top: 10px;
+            font-size: 0.9rem;
+            color: lightgray;
+            margin-top: 20px;
         }
 
-        /* Pie de página */
         footer {
             position: fixed;
             bottom: 0;
+            left: 0;
             width: 100%;
-            background-color: rgba(26, 13, 171, 0.9); /* Azul petróleo */
+            background-color: rgba(0, 0, 50, 0.8); /* Azul petróleo con opacidad */
             color: lightgray;
             text-align: center;
-            padding: 15px 0;
-            z-index: 2;
+            padding: 20px 0;
+            z-index: 1;
         }
 
         footer a {
             color: lightgray;
             text-decoration: none;
         }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Video de fondo -->
     <video autoplay loop muted playsinline id="background-video">
-        <source src="https://www.dropbox.com/scl/fi/5pyzqib5zrt3ot7p4qt9p/background.mp4?rlkey=dgo60sibxnzji6j89a6fw4uzm&st=5ed3ykpk&raw=1" type="video/mp4">
+        <source src="https://www.dropbox.com/scl/fi/5pyzqib5zrt3ot7p4qt9p/background.mp4?rlkey=dgo60sibxnzji6j89a6fw4uzm&raw=1" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
     <!-- Contenedor del formulario -->
     <div id="form-container">
-        <h2 style="color: lightgray; text-align: center;">Participation Form</h2>
+        <h2>Participation Form</h2>
         <form id="participationForm" method="POST" action="/send_email">
             <label for="name">Name (1st name only):</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+            <input type="text" id="name" name="name" placeholder="John" required><br>
 
             <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
+            <input type="email" id="email" name="email" placeholder="youremail@example.com" required><br>
 
             <button type="submit">Send</button>
         </form>
-
-        <!-- Indicación debajo del botón -->
-        <p class="agreement-text">
-            By pressing "Send", you agree to be part of this activity.
-        </p>
+        <p>By pressing "Send", you agree to be part of this activity.</p>
     </div>
 
+    <!-- Footer con créditos -->
     <footer>
         <p>Designed & Developed by Eli Morales</p>
         <p>This page was created with the help of Professor Joaquin Navarro Perales from the subject Data Structure, taught in the third semester at the Faculty of Accounting and Administration, UNAM.</p>
