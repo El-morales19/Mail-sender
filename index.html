@@ -10,6 +10,11 @@
 <body style="background-color: white; font-family: Arial, sans-serif; padding: 20px;">
     <h2>Participation Form</h2>
 
+    <video autoplay loop muted playsinline id="background-video">
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
     <form id="participationForm" method="POST" action="/send_email">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br><br>
