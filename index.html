@@ -15,6 +15,10 @@
             background-color: white;
             height: 100vh; /* Asegura que el body ocupe toda la altura de la pantalla */
             overflow: hidden; /* Elimina el scroll */
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Centra el contenido vertical y horizontalmente */
+            flex-direction: column;
         }
 
         /* Video de fondo */
@@ -34,11 +38,12 @@
             color: lightgray; /* Texto gris claro */
             padding: 40px;
             max-width: 600px;
-            margin: 0 auto;
+            width: 100%; /* Hace que el formulario sea responsivo */
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
             position: relative;
             z-index: 1;
+            margin: auto; /* Centra el formulario en la página */
         }
 
         h2 {
