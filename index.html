@@ -23,7 +23,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: -1;  /* Colocamos el video por detrás del formulario */
+            z-index: 0;  /* Colocamos el video por detrás del formulario */
         }
 
         /* Contenedor del formulario */
@@ -80,6 +80,14 @@
             background-color: darkgreen;
         }
 
+        /* Estilo de la indicación debajo del botón */
+        .agreement-text {
+            color: lightgray;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
         /* Pie de página */
         footer {
             position: fixed;
@@ -117,6 +125,11 @@
 
             <button type="submit">Send</button>
         </form>
+
+        <!-- Indicación debajo del botón -->
+        <p class="agreement-text">
+            By pressing "Send", you agree to be part of this activity.
+        </p>
     </div>
 
     <footer>
