@@ -5,120 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Participation Form</title>
     <style>
+        /* Estilo general del body */
         body {
             background-color: white;
             font-family: Arial, sans-serif;
-            padding: 20px;
             margin: 0;
-            height: 100vh;
+            padding: 0;
+            position: relative;
             overflow: hidden;
-            color: lightgray;
         }
 
-        /* Estilo para el fondo de video */
-        #video-background {
+        /* Video de fondo */
+        #background-video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Asegura que el video esté detrás del contenido */
+            object-fit: cover;
+            z-index: -1;  /* Colocamos el video por detrás del formulario */
         }
 
-        /* Estilo para el contenedor del formulario */
+        /* Contenedor del formulario */
         #form-container {
-            position: relative;
-            z-index: 1; /* Asegura que el formulario esté encima del video */
-            background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro y transparente para resaltar el formulario */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);  /* Fondo transparente */
             padding: 30px;
             border-radius: 10px;
-            width: 80%;
-            max-width: 600px;
-            margin: 0 auto;
+            z-index: 1;  /* Asegura que el formulario esté encima del video */
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
 
-        h2 {
-            text-align: center;
-            color: lightgray;
-        }
-
+        /* Estilo del formulario */
         form {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
 
+        /* Estilo de las etiquetas */
         label {
             color: lightgray;
-            font-size: 14px;
+            font-size: 16px;
         }
 
-        input {
+        /* Estilo de las cajas de texto */
+        input[type="text"], input[type="email"], button {
             padding: 10px;
             font-size: 16px;
             border: none;
             border-radius: 5px;
-            background-color: white;
+            margin-top: 5px;
         }
 
+        /* Cajas de texto */
+        input[type="text"], input[type="email"] {
+            background-color: #333;
+            color: lightgray;
+        }
+
+        /* Estilo del botón */
         button {
             background-color: green;
             color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         button:hover {
             background-color: darkgreen;
         }
 
+        /* Pie de página */
         footer {
-            position: absolute;
+            position: fixed;
             bottom: 0;
             width: 100%;
-            background-color: rgba(0, 0, 50, 0.7); /* Azul petróleo con transparencia */
+            background-color: rgba(26, 13, 171, 0.9); /* Azul petróleo */
             color: lightgray;
             text-align: center;
-            padding: 15px;
+            padding: 15px 0;
+            z-index: 2;
         }
 
         footer a {
             color: lightgray;
             text-decoration: none;
         }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
     </style>
 </head>
 <body>
 
-    <!-- Video de fondo de DropBox -->
-    <video autoplay loop muted playsinline id="background-video" style="width: 100%; height: 100%; object-fit: cover;">
-    <source src="https://www.dropbox.com/scl/fi/5pyzqib5zrt3ot7p4qt9p/background.mp4?rlkey=dgo60sibxnzji6j89a6fw4uzm&st=5ed3ykpk&raw=1" type="video/mp4">
-    Your browser does not support the video tag.
+    <video autoplay loop muted playsinline id="background-video">
+        <source src="https://www.dropbox.com/scl/fi/5pyzqib5zrt3ot7p4qt9p/background.mp4?rlkey=dgo60sibxnzji6j89a6fw4uzm&st=5ed3ykpk&raw=1" type="video/mp4">
+        Your browser does not support the video tag.
     </video>
-
 
     <!-- Contenedor del formulario -->
     <div id="form-container">
-        <h2>Participation Form</h2>
+        <h2 style="color: lightgray; text-align: center;">Participation Form</h2>
         <form id="participationForm" method="POST" action="/send_email">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="1st name only" required><br><br>
+            <label for="name">Name (1st name only):</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
 
             <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
 
             <button type="submit">Send</button>
         </form>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>Designed & Developed by Eli Morales</p>
         <p>This page was created with the help of Professor Joaquin Navarro Perales from the subject Data Structure, taught in the third semester at the Faculty of Accounting and Administration, UNAM.</p>
