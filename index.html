@@ -4,39 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Participation Form</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Elimina cualquier tipo de scroll */
+        }
 
-<body style="background-color: white; font-family: Arial, sans-serif; padding: 20px;">
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Coloca el video por detrás del contenido */
+        }
+
+        body {
+            background-color: transparent;
+            font-family: Arial, sans-serif;
+            color: lightgray;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            padding: 20px;
+        }
+
+        #participationForm {
+            background-color: rgba(0, 51, 102, 0.7); /* Azul petróleo transparente */
+            color: lightgray;
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        #participationForm label,
+        #participationForm input {
+            width: 100%;
+            margin-bottom: 10px;
+            color: lightgray;
+        }
+
+        #participationForm input[type="text"],
+        #participationForm input[type="email"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #participationForm button {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #participationForm button:hover {
+            background-color: darkgreen;
+        }
+
+        footer {
+            background-color: rgba(0, 51, 102, 0.8);
+            color: lightgray;
+            padding: 10px 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: lightgray;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
     <h2>Participation Form</h2>
 
     <video autoplay loop muted playsinline id="background-video">
         <source src="background.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-    
+
     <form id="participationForm" method="POST" action="/send_email">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
+        <label for="name">Name (1st name only):</label>
+        <input type="text" id="name" name="name" placeholder="Enter your first name" required><br>
 
         <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" required><br><br>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
 
-        <p>
-            <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
-            <label for="acceptTerms">By pressing "Send", you agree to be part of this activity.</label>
+        <button type="submit">Send</button>
+
+        <p style="text-align:center; color: lightgray;">
+            By pressing "Send", you agree to be part of this activity.
         </p>
-
-        <button type="submit" style="background-color: blue; color: white; padding: 10px 20px; border: none;">Send</button>
     </form>
 
     <footer>
-    <p>Designed & Developed by Eli Morales</p>
-    <p>This page was created with the help of Professor Joaquin Navarro Perales from the subject Data Structure, taught in the third semester at the Faculty of Accounting and Administration, UNAM.</p>
-    <p>Powered by <a href="https://vercel.com" target="_blank">Vercel</a></p>
-    <p>All content displayed here belongs to the project "My Field Of Expertise" during the course Speaking-003 at ENALLT, UNAM.</p>
+        <p>Designed & Developed by Eli Morales</p>
+        <p>This page was created with the help of Professor Joaquin Navarro Perales from the subject Data Structure, taught in the third semester at the Faculty of Accounting and Administration, UNAM.</p>
+        <p>Powered by <a href="https://vercel.com" target="_blank">Vercel</a></p>
+        <p>All content displayed here belongs to the project "My Field Of Expertise" during the course Speaking-003 at ENALLT, UNAM.</p>
     </footer>
-    
 </body>
-    
 </html>
