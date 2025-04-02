@@ -5,59 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Participation Form</title>
     <style>
-        html, body {
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
             margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden; /* Elimina cualquier tipo de scroll */
+            height: 100vh;
+            overflow: hidden;
+            color: lightgray;
         }
 
-        #background-video {
-            position: fixed;
+        /* Estilo para el fondo de video */
+        #video-background {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            z-index: -1; /* Coloca el video por detrás del contenido */
+            z-index: -1; /* Asegura que el video esté detrás del contenido */
         }
 
-        body {
-            background-color: transparent;
-            font-family: Arial, sans-serif;
-            color: lightgray;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-            padding: 20px;
-        }
-
-        #participationForm {
-            background-color: rgba(0, 51, 102, 0.7); /* Azul petróleo transparente */
-            color: lightgray;
+        /* Estilo para el contenedor del formulario */
+        #form-container {
+            position: relative;
+            z-index: 1; /* Asegura que el formulario esté encima del video */
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro y transparente para resaltar el formulario */
             padding: 30px;
             border-radius: 10px;
-            width: 100%;
-            max-width: 500px;
-            margin: auto;
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        #participationForm label,
-        #participationForm input {
-            width: 100%;
-            margin-bottom: 10px;
+        h2 {
+            text-align: center;
             color: lightgray;
         }
 
-        #participationForm input[type="text"],
-        #participationForm input[type="email"] {
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        #participationForm button {
+        label {
+            color: lightgray;
+            font-size: 14px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        button {
             background-color: green;
             color: white;
             padding: 10px 20px;
@@ -66,18 +70,18 @@
             cursor: pointer;
         }
 
-        #participationForm button:hover {
+        button:hover {
             background-color: darkgreen;
         }
 
         footer {
-            background-color: rgba(0, 51, 102, 0.8);
-            color: lightgray;
-            padding: 10px 20px;
-            text-align: center;
-            position: fixed;
+            position: absolute;
             bottom: 0;
             width: 100%;
+            background-color: rgba(0, 0, 50, 0.7); /* Azul petróleo con transparencia */
+            color: lightgray;
+            text-align: center;
+            padding: 15px;
         }
 
         footer a {
@@ -88,35 +92,37 @@
         footer a:hover {
             text-decoration: underline;
         }
+
     </style>
 </head>
 <body>
-    <h2>Participation Form</h2>
 
-    <video autoplay loop muted playsinline id="background-video">
-        <source src="background.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <!-- Video de fondo de YouTube -->
+    <div id="video-background">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/cOVxI9ypr9o?si=m38_Br2i4ZMuvyWD&autoplay=1&loop=1&mute=1&playlist=cOVxI9ypr9o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
 
-    <form id="participationForm" method="POST" action="/send_email">
-        <label for="name">Name (1st name only):</label>
-        <input type="text" id="name" name="name" placeholder="Enter your first name" required><br>
+    <!-- Contenedor del formulario -->
+    <div id="form-container">
+        <h2>Participation Form</h2>
+        <form id="participationForm" method="POST" action="/send_email">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="1st name only" required><br><br>
 
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="Email" required><br><br>
 
-        <button type="submit">Send</button>
+            <button type="submit">Send</button>
+        </form>
+    </div>
 
-        <p style="text-align:center; color: lightgray;">
-            By pressing "Send", you agree to be part of this activity.
-        </p>
-    </form>
-
+    <!-- Footer -->
     <footer>
         <p>Designed & Developed by Eli Morales</p>
         <p>This page was created with the help of Professor Joaquin Navarro Perales from the subject Data Structure, taught in the third semester at the Faculty of Accounting and Administration, UNAM.</p>
         <p>Powered by <a href="https://vercel.com" target="_blank">Vercel</a></p>
         <p>All content displayed here belongs to the project "My Field Of Expertise" during the course Speaking-003 at ENALLT, UNAM.</p>
     </footer>
+
 </body>
 </html>
